@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Sheet</h1>
+    <table id="myTable" class="table table-striped">
+        <thead class="thead">
+            <tr>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Grade</th>
+                <th scope="col">Favorite Meal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in entries %}
+            <tr>
+                {% for col in entry %}
+                <td> {{col}} </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!--https://datatables.net/reference/option/-->
+    <script>
+    $(document).ready( function () {
+        $('#myTable').DataTable({
+        paging: false,
+        lengthChange: false,
+        info: false
+        });
+    } );
+    </script>
+{% endblock %}
